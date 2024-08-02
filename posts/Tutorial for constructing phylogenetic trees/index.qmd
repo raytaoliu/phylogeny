@@ -1,0 +1,17 @@
+---
+title: "Tutorial for generating phylogenetic tree"
+author: "Ruitao Liu"
+date: "2024-08-02"
+categories: [code,analysis]
+---
+
+As next-generation sequencing technologies advance rapidly and the cost of metagenomic sequencing continues to decrease, researchers now face an unprecedented volume of microbiome data. This surge stimulates the development of scalable microbiome data analysis methods and necessitates the incorporation of phylogenetic information for improved accuracy. Tools for constructing phylogenetic trees from 16S rRNA sequencing data are well-established, since there are limited highly conserved regions of the 16S gene, simplifying the identification of marker genes. In contrast, metagenomic or wholegenome shotgun sequencing involves sequencing from random fragments of the entire gene, making it challenging to identify consistent marker genes due to the vast diversity of genomic regions. Because of these challenges and the early stage of development, there remains a scarcity of robust tools for building these phylogenetic trees. Moreover, insufficient knowledge and limited awareness restrict the integration of phylogenetic tree structures into downstream statistical analyses.
+
+# Tree construction based on 16S rRNA sequence data - QIIME 2
+
+1.  Install QIIME 2, users can find tutorial of installing QIIME 2 at https://docs.qiime2.org/2024.5/install/
+
+2.  Here, we provide an example dataset from the public data resource QIITA, specifically from study ID 12675 (https://qiita.ucsd.edu/study/description/12675). First, select "16S" from the "Data Types" tab on the left side. From the processing network, select any deblur table from the tips of the processing tree. Here, we choose the representative sequence file from the "deblur reference hit table" at the "Trimmed Demultiplexed 100" point.
+
+``` bash
+```
