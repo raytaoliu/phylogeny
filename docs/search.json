@@ -25,7 +25,7 @@
     "href": "index.html",
     "title": "Ruitao_website",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJun 11, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Tutorial for generating phylogenetic tree\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nAug 2, 2024\n\n\nRuitao Liu\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJun 11, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -33,5 +33,19 @@
     "title": "About",
     "section": "",
     "text": "About this blog"
+  },
+  {
+    "objectID": "posts/Tutorial for constructing phylogenetic trees/index.html",
+    "href": "posts/Tutorial for constructing phylogenetic trees/index.html",
+    "title": "Tutorial for generating phylogenetic tree",
+    "section": "",
+    "text": "As next-generation sequencing technologies advance rapidly and the cost of metagenomic sequencing continues to decrease, researchers now face an unprecedented volume of microbiome data. This surge stimulates the development of scalable microbiome data analysis methods and necessitates the incorporation of phylogenetic information for improved accuracy. Tools for constructing phylogenetic trees from 16S rRNA sequencing data are well-established, since there are limited highly conserved regions of the 16S gene, simplifying the identification of marker genes. In contrast, metagenomic or wholegenome shotgun sequencing involves sequencing from random fragments of the entire gene, making it challenging to identify consistent marker genes due to the vast diversity of genomic regions. Because of these challenges and the early stage of development, there remains a scarcity of robust tools for building these phylogenetic trees. Moreover, insufficient knowledge and limited awareness restrict the integration of phylogenetic tree structures into downstream statistical analyses."
+  },
+  {
+    "objectID": "posts/Tutorial for constructing phylogenetic trees/index.html#tree-construction-using-metaphlan-4",
+    "href": "posts/Tutorial for constructing phylogenetic trees/index.html#tree-construction-using-metaphlan-4",
+    "title": "Tutorial for generating phylogenetic tree",
+    "section": "Tree construction using MetaPhlAn 4",
+    "text": "Tree construction using MetaPhlAn 4"
   }
 ]

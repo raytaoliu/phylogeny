@@ -11,7 +11,29 @@ As next-generation sequencing technologies advance rapidly and the cost of metag
 
 1.  Install QIIME 2, users can find tutorial of installing QIIME 2 at https://docs.qiime2.org/2024.5/install/
 
-2.  Here, we provide an example dataset from the public data resource QIITA, specifically from study ID 12675 (https://qiita.ucsd.edu/study/description/12675). First, select "16S" from the "Data Types" tab on the left side. From the processing network, select any deblur table from the tips of the processing tree. Here, we choose the representative sequence file from the "deblur reference hit table" at the "Trimmed Demultiplexed 100" point.
+2.  Here, we provide an example dataset from the public data resource QIITA, specifically from study ID 12675 (https://qiita.ucsd.edu/study/description/12675). First, select "16S" from the "Data Types" tab on the left side. From the processing network, select any deblur table from the tips of the processing tree. Here, we choose the representative sequence file from the "deblur final table" at the "Trimmed Demultiplexed 100" point.
 
 ``` bash
+## Import fasta file into QIIME 2
+qiime tools import --type 'FeatureData[Sequence]' --input-path 170104_all.seqs.fa --output-path 170104_all.qza
+
+## Alignment
+qiime alignment mafft --i-sequences 170102_all.qza --o-alignment 170102-aligned.qza
+
+## Masking
+qiime alignment mask --i-alignment 170102-aligned.qza --o-masked-alignment masked-170102.qza
+
+## Build the tree
+qiime phylogeny fasttree --i-alignment masked-170102.qza --o-tree unrooted-170102.qza 
+
+## Root the tree
+qiime phylogeny midpoint-root --i-tree unrooted-170102.qza --o-rooted-tree rooted-170102.qza
+
+## Export the tree
+qiime tools export --input-path rooted-170102.qza --output-path rooted-170102
 ```
+
+Then you will get a newick format tree file.
+
+# Tree construction based on shotgun metagenomic sequence data
+## Tree construction using MetaPhlAn 4
