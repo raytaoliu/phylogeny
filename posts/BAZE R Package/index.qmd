@@ -1,13 +1,7 @@
 ---
-title: "Post With Code"
-author: "Harlow Malloc"
-date: "2024-06-11"
-categories: [news, code, analysis]
-image: "image.jpg"
+title: "BAZE R Package"
+author: "Ruitao Liu"
+date: "2024-08-07"
+categories: [news, R packages]
+image: "image.jpeg"
 ---
-
-This is a post with executable code.
-
-```{r}
-1 + 1
-```
