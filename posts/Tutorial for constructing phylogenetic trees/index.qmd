@@ -36,4 +36,27 @@ qiime tools export --input-path rooted-170102.qza --output-path rooted-170102
 Then you will get a newick format tree file.
 
 # Tree construction based on shotgun metagenomic sequence data
+
 ## Tree construction using MetaPhlAn 4
+
+1.  To install MetaPhlAn 4, users can refer to the detailed tutorial available at the following link: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.
+
+2.  Here, we also use study 12675 in QIITA as an example, for metagenomic shotgun sequence data, users need to download raw sequence data mannually. In the main page of study 12675, users can download raw sequence data by clicking link from EBI
+
+## Tree construction using Woltka
+
+1.  To install Woltka, users can refer to the tutorial at the link: https://github.com/qiyunzhu/woltka/blob/main/doc/install.md.
+
+2. Since Woltka accepts the align files, users still need to process raw sequence files through Bowtie 2, users can install and learn the Bowtie 2 at https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml. Users should install 'Web of Life' (WoL) database to keep align with the reference tree of Woltka, tutorial is at https://github.com/qiyunzhu/woltka/blob/main/doc/wol.md. After users finish Bowtie 2 step, the results are in one folder, for example, named as 'bowtie2_out', then we can perform Woltka to obtain phyloseq object.
+
+```bash
+## bowtie 2 processing code
+bowtie2 -x reference_index -1 sample_R1.fastq -2 sample_R2.fastq -S output.sam
+
+## Processing aligned files with Woltka
+woltka classify -i bowtie2_out -o table.biom
+
+## Converting BIOM file into a tab-delimited file
+biom convert --to-tsv -i table.biom -o table.tsv
+```
+

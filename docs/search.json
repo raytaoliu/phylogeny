@@ -25,7 +25,7 @@
     "href": "index.html",
     "title": "Ruitao_website",
     "section": "",
-    "text": "Tutorial for generating phylogenetic tree\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nAug 2, 2024\n\n\nRuitao Liu\n\n\n\n\n\n\n  \n\n\n\n\nPost With Code\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nJun 11, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "BAZE R Package\n\n\n\n\n\n\n\nnews\n\n\nR packages\n\n\n\n\n\n\n\n\n\n\n\nAug 7, 2024\n\n\nRuitao Liu\n\n\n\n\n\n\n  \n\n\n\n\nTutorial for generating phylogenetic tree\n\n\n\n\n\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nAug 2, 2024\n\n\nRuitao Liu\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nJun 8, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -47,5 +47,12 @@
     "title": "Tutorial for generating phylogenetic tree",
     "section": "Tree construction using MetaPhlAn 4",
     "text": "Tree construction using MetaPhlAn 4"
+  },
+  {
+    "objectID": "index.html#about",
+    "href": "index.html#about",
+    "title": "Ruitao_website",
+    "section": "",
+    "text": "More details about the website."
   }
 ]
