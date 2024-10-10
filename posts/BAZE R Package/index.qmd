@@ -3,5 +3,5 @@ title: "BAZE R Package"
 author: "Ruitao Liu"
 date: "2024-08-07"
 categories: [news, R packages]
-image: "image.jpeg"
+image: "image.jpg"
 ---
