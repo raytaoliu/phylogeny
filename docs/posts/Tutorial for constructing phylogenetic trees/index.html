@@ -96,7 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../style.css">
 </head>
 
 <body class="nav-fixed fullcontent">
@@ -210,6 +210,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>Tree construction based on shotgun metagenomic sequence data</h1>
 <section id="tree-construction-using-metaphlan-4" class="level2">
 <h2 class="anchored" data-anchor-id="tree-construction-using-metaphlan-4">Tree construction using MetaPhlAn 4</h2>
+<ol type="1">
+<li><p>To install MetaPhlAn 4, users can refer to the detailed tutorial available at the following link: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.</p></li>
+<li><p>Here, we also use study 12675 in QIITA as an example, for metagenomic shotgun sequence data, users need to download raw sequence data mannually. In the main page of study 12675, users can download raw sequence data by clicking link from EBI</p></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## Run MetaPhlAn 4 on paired-end FASTQ files to generate a species-level profile</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">metaphlan</span> sample_R1.fastq,sample_R2.fastq <span class="at">--input_type</span> fastq <span class="at">-o</span> metaphlan_output.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li><p>Download reference tree of MetaPhlAn 4 from https://github.com/biobakery/MetaPhlAn/blob/master/metaphlan/utils/mpa_vJun23_CHOCOPhlAnSGB_202403.nwk.</p></li>
+<li><p>Read your taxonomy profiling file in R, then subset the reference tree.</p></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Install necessary packages</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ape"</span>)  <span class="co"># For reading and subsetting phylogenetic trees</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)  <span class="co"># For data manipulation</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="do">## Load necessary libraries</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ape)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Read the MetaPhlAn 4 output (species-level profile)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>metaphlan_data <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"metaphlan_output.txt"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Read the reference tree in Newick format</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>reference_tree <span class="ot">&lt;-</span> <span class="fu">read.tree</span>(<span class="st">"mpa_vJun23_CHOCOPhlAnSGB_202403.nwk"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="do">## Subset the tree to keep only the detected taxa</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>subset_tree <span class="ot">&lt;-</span> <span class="fu">keep.tip</span>(reference_tree, <span class="fu">rownames</span>(metaphlan_data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tree-construction-using-woltka" class="level2">
+<h2 class="anchored" data-anchor-id="tree-construction-using-woltka">Tree construction using Woltka</h2>
+<ol type="1">
+<li><p>To install Woltka, users can refer to the tutorial at the link: https://github.com/qiyunzhu/woltka/blob/main/doc/install.md.</p></li>
+<li><p>Since Woltka accepts the align files, users still need to process raw sequence files through Bowtie 2, users can install and learn the Bowtie 2 at https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml. Users should install ‘Web of Life’ (WoL) database to keep align with the reference tree of Woltka, tutorial is at https://github.com/qiyunzhu/woltka/blob/main/doc/wol.md. After users finish Bowtie 2 step, the results are in one folder, for example, named as ‘bowtie2_out’, then we can perform Woltka to obtain phyloseq object.</p></li>
+</ol>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## bowtie 2 processing code</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">bowtie2</span> <span class="at">-x</span> reference_index <span class="at">-1</span> sample_R1.fastq <span class="at">-2</span> sample_R2.fastq <span class="at">-S</span> output.sam</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">## Processing aligned files with Woltka</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">woltka</span> classify <span class="at">-i</span> bowtie2_out <span class="at">-o</span> table.biom</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">## Converting BIOM file into a tab-delimited file</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="ex">biom</span> convert <span class="at">--to-tsv</span> <span class="at">-i</span> table.biom <span class="at">-o</span> table.tsv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 </section>
