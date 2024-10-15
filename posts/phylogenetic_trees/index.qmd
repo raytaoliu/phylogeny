@@ -41,19 +41,18 @@ Then you will get a newick format tree file.
 
 1.  To install MetaPhlAn 4, users can refer to the detailed tutorial available at the following link: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.
 
-
 2.  Here, we also use study 12675 in QIITA as an example, for metagenomic shotgun sequence data, users need to download raw sequence data mannually. In the main page of study 12675, users can download raw sequence data by clicking link from EBI
 
-```bash
+``` bash
 ## Run MetaPhlAn 4 on paired-end FASTQ files to generate a species-level profile
 metaphlan sample_R1.fastq,sample_R2.fastq --input_type fastq -o metaphlan_output.txt
 ```
 
-3. Download reference tree of MetaPhlAn 4 from https://github.com/biobakery/MetaPhlAn/blob/master/metaphlan/utils/mpa_vJun23_CHOCOPhlAnSGB_202403.nwk.
+3.  Download reference tree of MetaPhlAn 4 from https://github.com/biobakery/MetaPhlAn/blob/master/metaphlan/utils/mpa_vJun23_CHOCOPhlAnSGB_202403.nwk.
 
-4. Read your taxonomy profiling file in R, then subset the reference tree.
+4.  Read your taxonomy profiling file in R, then subset the reference tree.
 
-```r
+``` r
 ## Install necessary packages
 install.packages("ape")  # For reading and subsetting phylogenetic trees
 install.packages("dplyr")  # For data manipulation
@@ -71,13 +70,14 @@ reference_tree <- read.tree("mpa_vJun23_CHOCOPhlAnSGB_202403.nwk")
 ## Subset the tree to keep only the detected taxa
 subset_tree <- keep.tip(reference_tree, rownames(metaphlan_data))
 ```
+
 ## Tree construction using Woltka
 
 1.  To install Woltka, users can refer to the tutorial at the link: https://github.com/qiyunzhu/woltka/blob/main/doc/install.md.
 
-2. Since Woltka accepts the align files, users still need to process raw sequence files through Bowtie 2, users can install and learn the Bowtie 2 at https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml. Users should install 'Web of Life' (WoL) database to keep align with the reference tree of Woltka, tutorial is at https://github.com/qiyunzhu/woltka/blob/main/doc/wol.md. After users finish Bowtie 2 step, the results are in one folder, for example, named as 'bowtie2_out', then we can perform Woltka to obtain phyloseq object.
+2.  Since Woltka accepts the align files, users still need to process raw sequence files through Bowtie 2, users can install and learn the Bowtie 2 at https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml. Users should install 'Web of Life' (WoL) database to keep align with the reference tree of Woltka, tutorial is at https://github.com/qiyunzhu/woltka/blob/main/doc/wol.md. After users finish Bowtie 2 step, the results are in one folder, for example, named as 'bowtie2_out', then we can perform Woltka to obtain phyloseq object.
 
-```bash
+``` bash
 ## bowtie 2 processing code
 bowtie2 -x reference_index -1 sample_R1.fastq -2 sample_R2.fastq -S output.sam
 
@@ -87,4 +87,3 @@ woltka classify -i bowtie2_out -o table.biom
 ## Converting BIOM file into a tab-delimited file
 biom convert --to-tsv -i table.biom -o table.tsv
 ```
-
