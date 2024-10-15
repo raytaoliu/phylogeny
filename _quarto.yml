@@ -8,8 +8,10 @@ website:
     right:
       - about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/lrt666
       - icon: twitter
+        href: https://twitter.com
+      - icon: facebook
         href: https://twitter.com
 format:
   html:
