@@ -1,5 +1,5 @@
 ---
-title: "Tutorial for generating phylogenetic tree"
+title: "Tutorials for Constructing Phylogenetic Tree from Microbial Sequencing Data"
 author: "Ruitao Liu"
 date: "2024-08-02"
 categories: [code,analysis]
