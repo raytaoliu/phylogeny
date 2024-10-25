@@ -9,9 +9,9 @@ As next-generation sequencing technologies advance rapidly and the cost of metag
 
 # Tree construction based on 16S rRNA sequence data - QIIME 2
 
-1.  Install QIIME 2, users can find tutorial of installing QIIME 2 at https://docs.qiime2.org/2024.5/install/
+1.  Install QIIME 2, users can find tutorial of installing QIIME 2 at [https://docs.qiime2.org/2024.5/install/](https://docs.qiime2.org/2024.5/install/)
 
-2.  Here, we provide an example dataset from the public data resource QIITA, specifically from study ID 12675 (https://qiita.ucsd.edu/study/description/12675). First, select "16S" from the "Data Types" tab on the left side. From the processing network, select any deblur table from the tips of the processing tree. Here, we choose the representative sequence file from the "deblur final table" at the "Trimmed Demultiplexed 100" point.
+2.  Here, we provide an example dataset from the public data resource QIITA, specifically from study ID 12675 ([https://qiita.ucsd.edu/study/description/12675](https://qiita.ucsd.edu/study/description/12675)). First, select "16S" from the "Data Types" tab on the left side. From the processing network, select any deblur table from the tips of the processing tree. Here, we choose the representative sequence file from the "deblur final table" at the "Trimmed Demultiplexed 100" point.
 
 ``` bash
 ## Import fasta file into QIIME 2
@@ -39,9 +39,9 @@ Then you will get a newick format tree file.
 
 ## Tree construction using MetaPhlAn 4
 
-1.  To install MetaPhlAn 4, users can refer to the detailed tutorial available at the following link: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.
+1.  To install MetaPhlAn 4, users can refer to the detailed tutorial available at the following link: [https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4](https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4).
 
-2.  Here, we also use study 12675 in QIITA as an example, for metagenomic shotgun sequence data, users need to download raw sequence data mannually. In the main page of study 12675, users can download raw sequence data by clicking link from EBI
+2.  Here, we also use study 12675 in QIITA as an example, for metagenomic shotgun sequence data, users need to download raw sequence data manually. On the main page of study 12675, users can download raw sequence data by clicking the link from EBI: [https://www.ebi.ac.uk/ena/browser/view/PRJEB42155](https://www.ebi.ac.uk/ena/browser/view/PRJEB42155).
 
 ``` bash
 ## Run MetaPhlAn 4 on paired-end FASTQ files to generate a species-level profile
@@ -73,9 +73,9 @@ subset_tree <- keep.tip(reference_tree, rownames(metaphlan_data))
 
 ## Tree construction using Woltka
 
-1.  To install Woltka, users can refer to the tutorial at the link: https://github.com/qiyunzhu/woltka/blob/main/doc/install.md.
+1.  To install Woltka, users can refer to the tutorial at the link: [https://github.com/qiyunzhu/woltka/blob/main/doc/install.md](https://github.com/qiyunzhu/woltka/blob/main/doc/install.md).
 
-2.  Since Woltka accepts the align files, users still need to process raw sequence files through Bowtie 2, users can install and learn the Bowtie 2 at https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml. Users should install 'Web of Life' (WoL) database to keep align with the reference tree of Woltka, tutorial is at https://github.com/qiyunzhu/woltka/blob/main/doc/wol.md. After users finish Bowtie 2 step, the results are in one folder, for example, named as 'bowtie2_out', then we can perform Woltka to obtain phyloseq object.
+2.  Since Woltka accepts the align files, users still need to process raw sequence files through Bowtie 2, users can install and learn the Bowtie 2 at [https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml](https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml). Users should install 'Web of Life' (WoL) database to keep align with the reference tree of Woltka, tutorial is at [https://github.com/qiyunzhu/woltka/blob/main/doc/wol.md](https://github.com/qiyunzhu/woltka/blob/main/doc/wol.md). After users finish Bowtie 2 step, the results are in one folder, for example, named as 'bowtie2_out', then we can perform Woltka to obtain phyloseq object.
 
 ``` bash
 ## bowtie 2 processing code
